@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Legends: Bang Bang - Все о игре</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #f2f2f2;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header nav ul {
+            list-style-type: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 25px;
+        }
+
+        header nav ul li a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #FF6347;
+        }
+
+        main {
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(35, 35, 35, 0.8));
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #222;
+            color: white;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 36px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+            color: #FFD700;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Стиль для вкладок */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #FFD700;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            font-size: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background-color: #FF6347;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Стиль для карточек героев */
+        .hero-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .hero-card {
+            width: 300px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-card h3 {
+            margin: 10px 0;
+            font-size: 22px;
+            color: #FFD700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-card p {
+            color: #d3d3d3;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .hero-card a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #FF6347;
+            text-decoration: none;
+            padding: 8px;
+            background-color: #222;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-card a:hover {
+            background-color: #FFD700;
+            color: #222;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .search-bar {
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #222;
+            color: #FFD700;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-bar input:focus {
+            background-color: #444;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Герои</a></li>
+                <li><a href="#">Стратегии</a></li>
+                <li><a href="#">Магазин</a></li>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Форум</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Добро пожаловать в мир Mobile Legends: Bang Bang!</h1>
+            <p>Изучите героев, стратегии и последние новости по самой популярной мобильной MOBA-игре!</p>
+        </section>
+
+        <!-- Вкладки -->
+        <div class="tabs">
+            <button class="tab-button" onclick="showTab('heroes')">Герои</button>
+            <button class="tab-button" onclick="showTab('strategies')">Стратегии</button>
+            <button class="tab-button" onclick="showTab('shop')">Магазин</button>
+            <button class="tab-button" onclick="showTab('news')">Новости</button>
+        </div>
+
+        <!-- Контент вкладок -->
+        <div class="tab-content" id="heroes">
+            <h2>Герои</h2>
+            <div class="search-bar">
+                <input type="text" id="searchBar" placeholder="Поиск героев..." onkeyup="filterHeroes()">
+            </div>
+            <div class="hero-list" id="heroList"></div>
+        </div>
+
+        <div class="tab-content" id="strategies">
+            <h2>Стратегии</h2>
+
+            <h3>1. Стратегии для новичков</h3>
+            <p><strong>Овладение основами:</strong> Прежде всего, важно освоить основные принципы игры: как фармить крипов, как правильно перемещаться по карте и как использовать навыки героев.</p>
+            <ul>
+                <li>Старайтесь не оставаться на линии без защиты — не забывайте о врагах, которые могут вас атаковать.</li>
+                <li>Не игнорируйте свои баффы — их использование даст вам ощутимое преимущество в бою.</li>
+                <li>Учитесь правильно позиционировать героев для атаки и защиты.</li>
+            </ul>
+
+            <h3>2. Стратегии для опытных игроков</h3>
+            <p><strong>Сложные тактики:</strong> Опытные игроки должны развивать свои тактические и командные навыки, чтобы выигрывать на более высоком уровне.</p>
+            <ul>
+                <li>Работа в команде и хорошая координация действий — это основа победы. Всегда помогайте своим союзникам и вовремя используйте свои способности.</li>
+                <li>Не забывайте про объективы на карте — убийство драконов и захват башен может оказать решающее влияние на исход игры.</li>
+                <li>Гибкость — уметь менять стиль игры в зависимости от ситуации на поле боя.</li>
+            </ul>
+
+            <h3>3. Рекомендации по ролям</h3>
+            <h4>Танк:</h4>
+            <p>Как танк, ваша задача — защищать команду и создавать пространство для убийства. Старайтесь не агрессировать без необходимости и всегда следите за вражескими героями.</p>
+
+            <h4>Убийца:</h4>
+            <p>Убийцы должны выбирать моменты для нападений, атаковать врагов с низким уровнем здоровья и быстро уходить с поля боя, чтобы не попасть под контр-атаку.</p>
+
+            <h4>Стрелок:</h4>
+            <p>Стрелки наносят основной урон, но часто являются уязвимыми. Не забывайте поддерживать дистанцию и всегда проверять карту на наличие врагов.</p>
+        </div>
+
+        <div class="tab-content" id="shop">
+            <h2>Магазин</h2>
+            <p>В этом разделе доступны покупки внутриигровых предметов, скинов и других товаров.</p>
+        </div>
+
+        <div class="tab-content" id="news">
+            <h2>Новости</h2>
+            <ul>
+                <li><a href="#">Новое обновление: герои и скины</a></li>
+                <li><a href="#">Как выбрать героя для нового сезона</a></li>
+                <li><a href="#">Старт турнира MLBB в регионе</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Массив героев Mobile Legends (Пример с несколькими героями)
+        const heroes = [
+            { 
+                name: "Мия", 
+                role: "Стрелок", 
+                description: "Мия — это сильный герой для дальнего боя с высоким уроном, отличный для нанесения массового урона на расстоянии.",
+                strengths: "Высокий урон, отличная мобильность.",
+                weaknesses: "Низкая выживаемость, уязвимость к контролю."
+            },
+            { 
+                name: "Лейла", 
+                role: "Маг", 
+                description: "Лейла — мощный маг, способный наносить огромный урон на дальних дистанциях. Подходит для уничтожения врагов с безопасного расстояния.",
+                strengths: "Мощный дальнобойный урон, высокие показатели атаки.",
+                weaknesses: "Низкая мобильность, зависимость от позиции."
+            },
+            { 
+                name: "Зилонг", 
+                role: "Убийца", 
+                description: "Зилонг — персонаж, который может быстро ворваться в бой и уничтожить врагов с помощью своей молниеносной атаки.",
+                strengths: "Высокая мобильность, мощные комбо атаки.",
+                weaknesses: "Зависит от агрессии врага, требует высокой ловкости."
+            },
+            { 
+                name: "Гатоткача", 
+                role: "Танк", 
+                description: "Гатоткача — герой с огромным запасом здоровья, который может эффективно защищать своих союзников.",
+                strengths: "Высокая выживаемость, защита команды.",
+                weaknesses: "Низкий урон, уязвимость к магии."
+            },
+            { 
+                name: "Луи", 
+                role: "Поддержка", 
+                description: "Луи — герой с уникальными способностями по лечению и усилению союзников, что делает её незаменимой для поддержки команды.",
+                strengths: "Поддержка союзников, лечение и усиление.",
+                weaknesses: "Слабый урон, требуется защита от танков."
+            }
+        ];
+
+        // Функция для отображения всех героев
+        function displayHeroes() {
+            const heroList = document.getElementById('heroList');
+            heroList.innerHTML = '';
+
+            heroes.forEach(hero => {
+                const heroCard = document.createElement('div');
+                heroCard.classList.add('hero-card');
+                heroCard.innerHTML = `
+                    <h3>${hero.name}</h3>
+                    <p><strong>Роль:</strong> ${hero.role}</p>
+                    <p><strong>Описание:</strong> ${hero.description}</p>
+                    <p><strong>Сильные стороны:</strong> ${hero.strengths}</p>
+                    <p><strong>Слабые стороны:</strong> ${hero.weaknesses}</p>
+                `;
+                heroList.appendChild(heroCard);
+            });
+        }
+
+        // Функция для фильтрации героев по имени
+        function filterHeroes() {
+            const input = document.getElementById('searchBar');
+            const filter = input.value.toUpperCase();
+            const heroCards = document.getElementsByClassName('hero-card');
+            
+            for (let i = 0; i < heroCards.length; i++) {
+                const h3 = heroCards[i].getElementsByTagName('h3')[0];
+                const txtValue = h3.textContent || h3.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    heroCards[i].style.display = "";
+                } else {
+                    heroCards[i].style.display = "none";
+                }
+            }
+        }
+
+        // Функция для показа соответствующих вкладок
+        function showTab(tabId) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const activeTab = document.getElementById(tabId);
+            activeTab.classList.add('active');
+        }
+
+        // Загрузка героев при старте страницы
+        displayHeroes();
+
+        // Показ вкладки по умолчанию
+        showTab('heroes');
+    </script>
+
+</body>
+</html>
